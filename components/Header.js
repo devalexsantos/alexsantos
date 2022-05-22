@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header(props) {
   function classNames(...classes) {
@@ -31,7 +32,7 @@ export default function Header(props) {
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {props.navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className={classNames(
@@ -43,7 +44,7 @@ export default function Header(props) {
                           aria-current={item.current ? "page" : undefined}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -87,7 +88,6 @@ export default function Header(props) {
                   <Disclosure.Button
                     key={item.name}
                     as="a"
-                    href={item.href}
                     className={classNames(
                       item.current
                         ? "bg-zinc-900 text-white"
@@ -96,7 +96,7 @@ export default function Header(props) {
                     )}
                     aria-current={item.current ? "page" : undefined}
                   >
-                    {item.name}
+                    <Link href={item.href}>{item.name}</Link>
                   </Disclosure.Button>
                 ))}
               </div>
