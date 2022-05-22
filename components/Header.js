@@ -11,7 +11,7 @@ export default function Header(props) {
 
   return (
     <div>
-      <Disclosure as="nav" className="backdrop-blur-sm">
+      <Disclosure as="nav" className="backdrop-blur-sm fixed w-full z-[999]">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
