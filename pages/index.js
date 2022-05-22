@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Profile from "../components/Profile";
+import Content from "../components/Content";
 
 export async function getStaticProps() {
   const res = await fetch(
@@ -20,7 +21,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ personalInfo }) {
-  const data = personalInfo.result;
+  const data = personalInfo.result.info;
+  const posts = personalInfo.result.posts;
 
   const navigation = [
     { name: "Início", href: "#", current: true },
@@ -37,8 +39,9 @@ export default function Home({ personalInfo }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Header navigation={navigation} />
+        <Header info={data} navigation={navigation} />
         <Profile info={data} />
+        <Content posts={posts} />
       </main>
     </div>
   );

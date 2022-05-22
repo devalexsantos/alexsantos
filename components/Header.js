@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 
 export default function Header(props) {
   function classNames(...classes) {
@@ -48,17 +49,33 @@ export default function Header(props) {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center gap-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    type="button"
-                    className="bg-zinc-900 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  >
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <button type="button">
+                    <a
+                      href={props.info.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src="/assets/icon-linkedin.svg"
+                        alt="Linkedin Logo"
+                        width={35}
+                        height={35}
+                      />
+                    </a>
                   </button>
-                  <button
-                    type="button"
-                    className="bg-zinc-900 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  >
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <button type="button">
+                    <a
+                      href={props.info.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src="/assets/icon-github.svg"
+                        alt="Linkedin Logo"
+                        width={33}
+                        height={33}
+                      />
+                    </a>
                   </button>
                 </div>
               </div>
