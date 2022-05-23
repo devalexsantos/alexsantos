@@ -11,7 +11,7 @@ export default function Content(props) {
           item.featured == "true" ? (
             <div
               key={index}
-              className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[250px]"
+              className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px]"
             >
               {" "}
               <div className="flex justify-end">
@@ -20,8 +20,11 @@ export default function Content(props) {
               <span className="block text-sm">
                 {item.date.substr(0, 10).split("-").reverse().join("/")}
               </span>
-              <span className="text-xl items-center">{item.tittle} </span>
-              <p>{item.description}</p>
+              <span className="text-xl items-center leading-4">
+                {item.tittle}{" "}
+              </span>
+              <p className="leading-6 text-sm">{item.description}</p>
+              <p className="p-1 text-sm text-green-300">{item.tags}</p>
               {item.link != "" && (
                 <span className="inline-block">
                   <a href={item.link} target="_blank" rel="noreferrer">
@@ -71,13 +74,14 @@ export default function Content(props) {
         {props.posts.map((item, index) => (
           <div
             key={index}
-            className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[250px]"
+            className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px]"
           >
             <span className="block text-sm">
               {item.date.substr(0, 10).split("-").reverse().join("/")}
             </span>
             <span className="text-xl items-center">{item.tittle} </span>
-            <p>{item.description}</p>
+            <p className="leading-6 text-sm">{item.description}</p>
+            <p className="p-1 text-sm text-green-300">{item.tags}</p>
             {item.link != "" && (
               <span className="inline-block">
                 <a href={item.link} target="_blank" rel="noreferrer">
