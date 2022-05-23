@@ -1,4 +1,4 @@
-import { PushPin } from "phosphor-react";
+import { Link, Code, PushPin, YoutubeLogo } from "phosphor-react";
 
 export default function Content(props) {
   return (
@@ -17,11 +17,49 @@ export default function Content(props) {
               <div className="flex justify-end">
                 <PushPin size={12} weight="bold" />
               </div>
-              <span className="text-xl items-center">{item.tittle} </span>
-              <span className="text-md">
-                - {item.date.substr(0, 10).split("-").reverse().join("/")}
+              <span className="block text-sm">
+                {item.date.substr(0, 10).split("-").reverse().join("/")}
               </span>
+              <span className="text-xl items-center">{item.tittle} </span>
               <p>{item.description}</p>
+              {item.link != "" && (
+                <span className="inline-block">
+                  <a href={item.link} target="_blank" rel="noreferrer">
+                    <Link
+                      size={30}
+                      weight="regular"
+                      className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                    />
+                  </a>
+                </span>
+              )}
+              {item.source != "" && (
+                <span className="inline-block">
+                  <a href={item.source} target="_blank" rel="noreferrer">
+                    <Code
+                      size={30}
+                      weight="regular"
+                      className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                    />
+                  </a>
+                </span>
+              )}
+              {item.video != "" && (
+                <span className="inline-block">
+                  <a href={item.video} target="_blank" rel="noreferrer">
+                    <YoutubeLogo
+                      size={30}
+                      weight="regular"
+                      className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                    />
+                  </a>
+                </span>
+              )}
+              {item.link == "" && item.source == "" && item.video == "" && (
+                <span className="font-light text-sm">
+                  (sem link disponível)
+                </span>
+              )}
             </div>
           ) : null
         )}
@@ -35,11 +73,47 @@ export default function Content(props) {
             key={index}
             className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[250px]"
           >
-            <span className="text-xl items-center">{item.tittle} </span>
-            <span className="text-md">
-              - {item.date.substr(0, 10).split("-").reverse().join("/")}
+            <span className="block text-sm">
+              {item.date.substr(0, 10).split("-").reverse().join("/")}
             </span>
+            <span className="text-xl items-center">{item.tittle} </span>
             <p>{item.description}</p>
+            {item.link != "" && (
+              <span className="inline-block">
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <Link
+                    size={30}
+                    weight="regular"
+                    className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                  />
+                </a>
+              </span>
+            )}
+            {item.source != "" && (
+              <span className="inline-block">
+                <a href={item.source} target="_blank" rel="noreferrer">
+                  <Code
+                    size={30}
+                    weight="regular"
+                    className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                  />
+                </a>
+              </span>
+            )}
+            {item.video != "" && (
+              <span className="inline-block">
+                <a href={item.video} target="_blank" rel="noreferrer">
+                  <YoutubeLogo
+                    size={30}
+                    weight="regular"
+                    className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                  />
+                </a>
+              </span>
+            )}
+            {item.link == "" && item.source == "" && item.video == "" && (
+              <span className="font-light text-sm">(sem link disponível)</span>
+            )}
           </div>
         ))}
       </div>

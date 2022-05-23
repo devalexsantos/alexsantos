@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Profile from "../components/Profile";
 import Content from "../components/Content";
+import Footer from "../components/Footer";
 
 export async function getStaticProps() {
   const res = await fetch(
@@ -42,6 +43,7 @@ export default function Home({ personalInfo }) {
         <Header info={data} navigation={navigation} />
         <Profile info={data} />
         <Content posts={posts} />
+        <Footer info={data} />
       </main>
     </div>
   );
