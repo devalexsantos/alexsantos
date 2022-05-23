@@ -1,4 +1,5 @@
 import { Link, Code, PushPin, YoutubeLogo } from "phosphor-react";
+import Image from "next/image";
 
 export default function Content(props) {
   return (
@@ -20,11 +21,28 @@ export default function Content(props) {
               <span className="block text-sm">
                 {item.date.substr(0, 10).split("-").reverse().join("/")}
               </span>
+              {item.image != "" ? (
+                <Image
+                  src={item.image}
+                  width={300}
+                  height={250}
+                  alt="Alex Santos"
+                  className="rounded"
+                />
+              ) : (
+                <Image
+                  src="/assets/projects-image-default.jpg"
+                  width={300}
+                  height={250}
+                  alt="Alex Santos"
+                  className="rounded"
+                />
+              )}
+              <p className="p-1 text-sm text-green-300">{item.tags}</p>
               <span className="text-xl items-center leading-4">
                 {item.tittle}{" "}
               </span>
               <p className="leading-6 text-sm">{item.description}</p>
-              <p className="p-1 text-sm text-green-300">{item.tags}</p>
               {item.link != "" && (
                 <span className="inline-block">
                   <a href={item.link} target="_blank" rel="noreferrer">
@@ -79,9 +97,26 @@ export default function Content(props) {
             <span className="block text-sm">
               {item.date.substr(0, 10).split("-").reverse().join("/")}
             </span>
+            {item.image != "" ? (
+              <Image
+                src={item.image}
+                width={300}
+                height={250}
+                alt="Alex Santos"
+                className="rounded"
+              />
+            ) : (
+              <Image
+                src="/assets/projects-image-default.jpg"
+                width={300}
+                height={250}
+                alt="Alex Santos"
+                className="rounded"
+              />
+            )}
+            <p className="p-1 text-sm text-green-300">{item.tags}</p>
             <span className="text-xl items-center">{item.tittle} </span>
             <p className="leading-6 text-sm">{item.description}</p>
-            <p className="p-1 text-sm text-green-300">{item.tags}</p>
             {item.link != "" && (
               <span className="inline-block">
                 <a href={item.link} target="_blank" rel="noreferrer">
