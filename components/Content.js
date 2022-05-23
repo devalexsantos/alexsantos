@@ -22,21 +22,25 @@ export default function Content(props) {
                 {item.date.substr(0, 10).split("-").reverse().join("/")}
               </span>
               {item.image != "" ? (
-                <Image
-                  src={item.image}
-                  width={300}
-                  height={250}
-                  alt="Alex Santos"
-                  className="rounded"
-                />
+                <div className="w-full flex justify-center my-2">
+                  <Image
+                    src={item.image}
+                    width={300}
+                    height={250}
+                    alt="Alex Santos"
+                    className="rounded"
+                  />
+                </div>
               ) : (
-                <Image
-                  src="/assets/projects-image-default.jpg"
-                  width={300}
-                  height={250}
-                  alt="Alex Santos"
-                  className="rounded"
-                />
+                <div className="w-full flex justify-center my-2">
+                  <Image
+                    src="/assets/projects-image-default.jpg"
+                    width={300}
+                    height={250}
+                    alt="Alex Santos"
+                    className="rounded"
+                  />
+                </div>
               )}
               <p className="p-1 text-sm text-green-300">{item.tags}</p>
               <span className="text-xl items-center leading-4">
@@ -98,21 +102,25 @@ export default function Content(props) {
               {item.date.substr(0, 10).split("-").reverse().join("/")}
             </span>
             {item.image != "" ? (
-              <Image
-                src={item.image}
-                width={300}
-                height={250}
-                alt="Alex Santos"
-                className="rounded"
-              />
+              <div className="w-full flex justify-center my-2">
+                <Image
+                  src={item.image}
+                  width={300}
+                  height={250}
+                  alt="Alex Santos"
+                  className="rounded"
+                />
+              </div>
             ) : (
-              <Image
-                src="/assets/projects-image-default.jpg"
-                width={300}
-                height={250}
-                alt="Alex Santos"
-                className="rounded"
-              />
+              <div className="w-full flex justify-center my-2">
+                <Image
+                  src="/assets/projects-image-default.jpg"
+                  width={300}
+                  height={250}
+                  alt="Alex Santos"
+                  className="rounded"
+                />
+              </div>
             )}
             <p className="p-1 text-sm text-green-300">{item.tags}</p>
             <span className="text-xl items-center">{item.tittle} </span>
