@@ -67,6 +67,7 @@ export default function Home({ notFound, individualPost }) {
 
   if (!notFound) {
     const data = individualPost.result;
+    console.log(data);
     return (
       <div>
         <Head>
