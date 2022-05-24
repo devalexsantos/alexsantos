@@ -1,5 +1,6 @@
-import { Link, Code, PushPin, YoutubeLogo } from "phosphor-react";
+import { Code, PushPin, YoutubeLogo } from "phosphor-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Content(props) {
   return (
@@ -10,14 +11,80 @@ export default function Content(props) {
       <div className="flex justify-center flex-row flex-wrap w-full mb-7">
         {props.posts.map((item, index) =>
           item.featured == "true" ? (
-            <div
-              key={index}
-              className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px]"
-            >
-              {" "}
-              <div className="flex justify-end">
-                <PushPin size={12} weight="bold" />
+            <Link href={`/posts/${item.slug}`} key={index}>
+              <div className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px] cursor-pointer">
+                {" "}
+                <div className="flex justify-end">
+                  <PushPin size={12} weight="bold" />
+                </div>
+                <span className="block text-sm">
+                  {item.date.substr(0, 10).split("-").reverse().join("/")}
+                </span>
+                {item.image != "" ? (
+                  <div className="w-full flex justify-center my-2">
+                    <Image
+                      src={item.image}
+                      width={300}
+                      height={250}
+                      alt="Alex Santos"
+                      className="rounded"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-full flex justify-center my-2">
+                    <Image
+                      src="/assets/projects-image-default.jpg"
+                      width={300}
+                      height={250}
+                      alt="Alex Santos"
+                      className="rounded"
+                    />
+                  </div>
+                )}
+                <p className="p-1 text-sm text-green-300">{item.tags}</p>
+                <span className="text-xl items-center leading-4">
+                  {item.tittle}{" "}
+                </span>
+                <p className="leading-6 text-sm">{item.description}</p>
+                {item.source != "" && (
+                  <span className="inline-block">
+                    <a href={item.source} target="_blank" rel="noreferrer">
+                      <Code
+                        size={30}
+                        weight="regular"
+                        className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                      />
+                    </a>
+                  </span>
+                )}
+                {item.video != "" && (
+                  <span className="inline-block">
+                    <a href={item.video} target="_blank" rel="noreferrer">
+                      <YoutubeLogo
+                        size={30}
+                        weight="regular"
+                        className="border rounded-full m-1 p-1 hover:bg-zinc-700"
+                      />
+                    </a>
+                  </span>
+                )}
+                {item.link == "" && item.source == "" && item.video == "" && (
+                  <span className="font-light text-sm">
+                    (sem link disponível)
+                  </span>
+                )}
               </div>
+            </Link>
+          ) : null
+        )}
+      </div>
+      <div className="pb-4">
+        <h2 className="text-2xl">Últimas Publicações:</h2>
+      </div>
+      <div className="flex justify-center flex-row flex-wrap">
+        {props.posts.map((item, index) => (
+          <Link href={`/posts/${item.slug}`} key={index}>
+            <div className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px] cursor-pointer">
               <span className="block text-sm">
                 {item.date.substr(0, 10).split("-").reverse().join("/")}
               </span>
@@ -43,9 +110,7 @@ export default function Content(props) {
                 </div>
               )}
               <p className="p-1 text-sm text-green-300">{item.tags}</p>
-              <span className="text-xl items-center leading-4">
-                {item.tittle}{" "}
-              </span>
+              <span className="text-xl items-center">{item.tittle} </span>
               <p className="leading-6 text-sm">{item.description}</p>
               {item.link != "" && (
                 <span className="inline-block">
@@ -86,82 +151,7 @@ export default function Content(props) {
                 </span>
               )}
             </div>
-          ) : null
-        )}
-      </div>
-      <div className="pb-4">
-        <h2 className="text-2xl">Últimas Publicações:</h2>
-      </div>
-      <div className="flex justify-center flex-row flex-wrap">
-        {props.posts.map((item, index) => (
-          <div
-            key={index}
-            className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px]"
-          >
-            <span className="block text-sm">
-              {item.date.substr(0, 10).split("-").reverse().join("/")}
-            </span>
-            {item.image != "" ? (
-              <div className="w-full flex justify-center my-2">
-                <Image
-                  src={item.image}
-                  width={300}
-                  height={250}
-                  alt="Alex Santos"
-                  className="rounded"
-                />
-              </div>
-            ) : (
-              <div className="w-full flex justify-center my-2">
-                <Image
-                  src="/assets/projects-image-default.jpg"
-                  width={300}
-                  height={250}
-                  alt="Alex Santos"
-                  className="rounded"
-                />
-              </div>
-            )}
-            <p className="p-1 text-sm text-green-300">{item.tags}</p>
-            <span className="text-xl items-center">{item.tittle} </span>
-            <p className="leading-6 text-sm">{item.description}</p>
-            {item.link != "" && (
-              <span className="inline-block">
-                <a href={item.link} target="_blank" rel="noreferrer">
-                  <Link
-                    size={30}
-                    weight="regular"
-                    className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                  />
-                </a>
-              </span>
-            )}
-            {item.source != "" && (
-              <span className="inline-block">
-                <a href={item.source} target="_blank" rel="noreferrer">
-                  <Code
-                    size={30}
-                    weight="regular"
-                    className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                  />
-                </a>
-              </span>
-            )}
-            {item.video != "" && (
-              <span className="inline-block">
-                <a href={item.video} target="_blank" rel="noreferrer">
-                  <YoutubeLogo
-                    size={30}
-                    weight="regular"
-                    className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                  />
-                </a>
-              </span>
-            )}
-            {item.link == "" && item.source == "" && item.video == "" && (
-              <span className="font-light text-sm">(sem link disponível)</span>
-            )}
-          </div>
+          </Link>
         ))}
       </div>
     </div>
