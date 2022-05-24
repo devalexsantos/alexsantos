@@ -60,7 +60,9 @@ export default function Home({ individualPost }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Header info={data} navigation={navigation} />
         <Post post={data} />
+        <Footer info={data} />
       </main>
     </div>
   );

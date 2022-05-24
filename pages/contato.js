@@ -7,7 +7,7 @@ import Content from "../components/Content";
 
 export async function getStaticProps() {
   const res = await fetch(
-    "https://dev113442.service-now.com/api/720824/personal_information"
+    "https://dev113442.service-now.com/api/720824/devalexsantos"
   );
   const personalInfo = await res.json();
 
