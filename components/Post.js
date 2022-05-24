@@ -1,6 +1,18 @@
+import { ArrowUUpLeft } from "phosphor-react";
+import Link from "next/link";
+
 export default function Post(props) {
   return (
-    <div className="md:container mx-auto pt-40 flex flex-col justify-center items-center">
+    <div className="md:container mx-auto pt-20 flex flex-col justify-center items-center">
+      <div>
+        <Link href="/">
+          <ArrowUUpLeft
+            size={40}
+            className="border rounded-full m-1 p-1 hover:bg-zinc-700 cursor-pointer"
+          />
+        </Link>
+      </div>
+
       <div className="w-full">
         <h1 className="text-2xl md:text-3xl lg:text-5xl text-center">
           {props.post.tittle}

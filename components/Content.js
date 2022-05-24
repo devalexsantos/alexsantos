@@ -1,4 +1,4 @@
-import { Code, PushPin, YoutubeLogo } from "phosphor-react";
+import { PushPin } from "phosphor-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -46,33 +46,6 @@ export default function Content(props) {
                   {item.tittle}{" "}
                 </span>
                 <p className="leading-6 text-sm">{item.description}</p>
-                {item.source != "" && (
-                  <span className="inline-block">
-                    <a href={item.source} target="_blank" rel="noreferrer">
-                      <Code
-                        size={30}
-                        weight="regular"
-                        className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                      />
-                    </a>
-                  </span>
-                )}
-                {item.video != "" && (
-                  <span className="inline-block">
-                    <a href={item.video} target="_blank" rel="noreferrer">
-                      <YoutubeLogo
-                        size={30}
-                        weight="regular"
-                        className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                      />
-                    </a>
-                  </span>
-                )}
-                {item.link == "" && item.source == "" && item.video == "" && (
-                  <span className="font-light text-sm">
-                    (sem link disponível)
-                  </span>
-                )}
               </div>
             </Link>
           ) : null
@@ -112,44 +85,6 @@ export default function Content(props) {
               <p className="p-1 text-sm text-green-300">{item.tags}</p>
               <span className="text-xl items-center">{item.tittle} </span>
               <p className="leading-6 text-sm">{item.description}</p>
-              {item.link != "" && (
-                <span className="inline-block">
-                  <a href={item.link} target="_blank" rel="noreferrer">
-                    <Link
-                      size={30}
-                      weight="regular"
-                      className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                    />
-                  </a>
-                </span>
-              )}
-              {item.source != "" && (
-                <span className="inline-block">
-                  <a href={item.source} target="_blank" rel="noreferrer">
-                    <Code
-                      size={30}
-                      weight="regular"
-                      className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                    />
-                  </a>
-                </span>
-              )}
-              {item.video != "" && (
-                <span className="inline-block">
-                  <a href={item.video} target="_blank" rel="noreferrer">
-                    <YoutubeLogo
-                      size={30}
-                      weight="regular"
-                      className="border rounded-full m-1 p-1 hover:bg-zinc-700"
-                    />
-                  </a>
-                </span>
-              )}
-              {item.link == "" && item.source == "" && item.video == "" && (
-                <span className="font-light text-sm">
-                  (sem link disponível)
-                </span>
-              )}
             </div>
           </Link>
         ))}
