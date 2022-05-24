@@ -91,19 +91,22 @@ export default function Header(props) {
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {props.navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    className={classNames(
-                      item.current
-                        ? "bg-zinc-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "block px-3 py-2 rounded-md text-base font-medium"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
-                  >
-                    <Link href={item.href}>{item.name}</Link>
-                  </Disclosure.Button>
+                  <div key={item.name} className="flex flex-col">
+                    <Link href={item.href}>
+                      <Disclosure.Button
+                        as="a"
+                        className={classNames(
+                          item.current
+                            ? "bg-zinc-900 text-white w-full"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white w-full",
+                          "px-3 py-2 rounded-md text-base font-medium w-full"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Disclosure.Button>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </Disclosure.Panel>
