@@ -16,9 +16,15 @@ export async function getStaticProps(context) {
 
     const individualPost = await res.json();
 
+    const resInfo = await fetch(
+      "https://dev113442.service-now.com/api/720824/devalexsantos"
+    );
+    const personalInfo = await resInfo.json();
+
     return {
       props: {
         individualPost,
+        personalInfo,
       },
 
       revalidate: 3,
@@ -52,7 +58,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Home({ notFound, individualPost }) {
+export default function Home({ notFound, individualPost, personalInfo }) {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -66,6 +72,7 @@ export default function Home({ notFound, individualPost }) {
   ];
 
   if (!notFound) {
+    const info = personalInfo.result.info;
     const data = individualPost.result;
     console.log(data);
     return (
@@ -76,9 +83,9 @@ export default function Home({ notFound, individualPost }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-          <Header info={data} navigation={navigation} />
+          <Header info={info} navigation={navigation} />
           <Post post={data} />
-          <Footer info={data} />
+          <Footer info={info} />
         </main>
       </div>
     );

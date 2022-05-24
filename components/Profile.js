@@ -11,19 +11,25 @@ export default function Profile(props) {
           exit={{ opacity: 0 }}
         >
           <div className="flex flex-col justify-center items-center align-center container mx-auto py-10">
-            <div className="flex flex-col justify-center items-center align-center text-center mt-10">
+            <div className="md:flex ms:flex-row justify-center items-center align-center text-center md:text-left md:gap-6 mt-10">
               <Image
                 src={props.info.avatar}
-                width={150}
-                height={150}
+                width={200}
+                height={200}
                 alt="Alex Santos"
                 className="rounded-full"
               />
-              <h1 className="text-2xl md:text-3xl">{props.info.name}</h1>
-              <p className="p-2 font-medium text-xl">{props.info.bio}</p>
-              <p className="text-xl max-w-[700px] px-4 font-light">
-                {props.info.description}
-              </p>
+              <div>
+                <h1 className="text-2xl md:text-3xl md:px-4">
+                  {props.info.name}
+                </h1>
+                <p className="p-2 font-medium text-xl md:px-4">
+                  {props.info.bio}
+                </p>
+                <p className="text-xl max-w-[700px] px-4 font-light">
+                  {props.info.description}
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
