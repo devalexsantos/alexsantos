@@ -4,7 +4,6 @@ import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Post from "../../components/Post";
-import { useRouter } from "next/router";
 
 export async function getStaticProps(context) {
   const { params } = context;
@@ -39,12 +38,11 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: true,
+    fallback: false,
   };
 }
 
 export default function Home({ individualPost }) {
-  const router = useRouter();
   const data = individualPost.result;
 
   const navigation = [
@@ -53,10 +51,6 @@ export default function Home({ individualPost }) {
     { name: "Works", href: "#", current: false },
     { name: "Contato", href: "/contato", current: false },
   ];
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
