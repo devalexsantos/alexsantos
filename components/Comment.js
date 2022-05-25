@@ -1,7 +1,6 @@
 import { DiscussionEmbed } from "disqus-react";
 
 const Comments = (props) => {
-  console.log(props.post);
   const shortname = "devalexsantos-com-br";
 
   const config = {
@@ -11,7 +10,7 @@ const Comments = (props) => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto p-4">
       <DiscussionEmbed shortname={shortname} config={config} />
     </div>
   );
