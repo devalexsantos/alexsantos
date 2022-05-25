@@ -2,9 +2,9 @@ import { DiscussionEmbed } from "disqus-react";
 
 const Comments = (props) => {
   console.log(props.post);
-  const disqusShortname = "devalexsantos-com-br";
+  const shortname = "devalexsantos-com-br";
 
-  const disqusConfig = {
+  const config = {
     url: `https://devalexsantos.com.br/${props.post.slug}`,
     identifier: props.post.slug,
     title: props.post.tittle,
@@ -12,7 +12,7 @@ const Comments = (props) => {
 
   return (
     <div className="container mx-auto">
-      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+      <DiscussionEmbed shortname={shortname} config={config} />
     </div>
   );
 };
