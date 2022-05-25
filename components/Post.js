@@ -21,7 +21,7 @@ export default function Post(props) {
       </div>
 
       <div
-        className="w-full max-w-[900px] m-4 p-4 mx-auto rounded-md bg-zinc-800 shadow-md"
+        className="w-full max-w-[900px] m-6 p-6 mx-auto rounded-md text-zinc-800 bg-gray-100 shadow-md"
         dangerouslySetInnerHTML={{ __html: props.post.longDescription }}
       ></div>
     </div>

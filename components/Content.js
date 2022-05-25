@@ -11,9 +11,8 @@ export default function Content(props) {
       <div className="flex justify-center flex-row flex-wrap w-full mb-7">
         {props.posts.map((item, index) =>
           item.featured == "true" ? (
-            <Link href={`/posts/${item.slug}`} key={index}>
-              <div className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px] cursor-pointer">
-                {" "}
+            <Link href={`/${item.slug}`} key={index}>
+              <div className="hover:scale-105 ease-in-out duration-200 bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px] cursor-pointer">
                 <div className="flex justify-end">
                   <PushPin size={12} weight="bold" />
                 </div>
@@ -56,8 +55,8 @@ export default function Content(props) {
       </div>
       <div className="flex justify-center flex-row flex-wrap">
         {props.posts.map((item, index) => (
-          <Link href={`/posts/${item.slug}`} key={index}>
-            <div className="bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px] cursor-pointer">
+          <Link href={`/${item.slug}`} key={index}>
+            <div className="hover:scale-105 ease-in-out duration-200 bg-zinc-900 m-4 p-4 rounded shadow-md w-full md:max-w-[300px] cursor-pointer">
               <span className="block text-sm">
                 {item.date.substr(0, 10).split("-").reverse().join("/")}
               </span>

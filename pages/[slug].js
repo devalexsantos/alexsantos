@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import Head from "next/head";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import Post from "../../components/Post";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Post from "../components/Post";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Comments from "../components/Comment";
 
 export async function getStaticProps(context) {
   const { params } = context;
@@ -80,12 +81,14 @@ export default function Posts({ notFound, individualPost, personalInfo }) {
           <title>{data.tittle}</title>
           <meta name="description" content={data.description} />
           <meta name="robots" content="index,follow,archive" />
+          <meta name="keywords" content={data.tags}></meta>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className="min-w-[350px]">
           <Header info={info} navigation={navigation} />
           <Post post={data} />
           <Footer info={info} />
+          <Comments post={data} />
         </main>
       </div>
     );

@@ -13,7 +13,7 @@ export default function Header(props) {
     <div>
       <Disclosure
         as="nav"
-        className="backdrop-blur-sm fixed w-full z-[999] shadow-xl"
+        className="bg-zinc-800 fixed w-full z-[999] shadow-xl"
       >
         {({ open }) => (
           <>
