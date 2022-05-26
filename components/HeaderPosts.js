@@ -11,16 +11,17 @@ export default function HeaderPosts(props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className="flex flex-col justify-center items-center align-center container mx-auto py-10">
-            <div className="md:flex ms:flex-row justify-center items-center align-center text-center md:text-left md:gap-6 mt-10">
-              <ul className="p-4">
-                {props.categories.map((item) => (
-                  <li key={item.id} className="p-1 text-center cursor-pointer">
-                    <Link href={`/categoria/${item.slug}`}>{item.title}</Link>
+          <div className="flex-col justify-center items-center text-center pt-20">
+            <span className="pt-10">Filtro:</span>
+            <ul className="flex-col md:flex md:flex-row justify-center gap-3 p-4">
+              {props.categories.map((item) => (
+                <Link href={`/categoria/${item.slug}`} key={item.id}>
+                  <li className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-center cursor-pointer">
+                    {item.title}
                   </li>
-                ))}
-              </ul>
-            </div>
+                </Link>
+              ))}
+            </ul>
           </div>
         </motion.div>
       </MotionConfig>

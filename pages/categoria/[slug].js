@@ -3,7 +3,7 @@ import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
-import HeaderCategories from "../../components/HeaderPosts";
+import CategoriesHeader from "../../components/CategoriesHeader";
 import PostsContent from "../../components/PostsContent";
 
 export async function getStaticProps(context) {
@@ -94,7 +94,7 @@ export default function CategoryPage({
         </Head>
         <main className="min-w-[350px]">
           <Header info={info} navigation={navigation} />
-          <HeaderCategories categories={cat} />
+          <CategoriesHeader categories={cat} />
           <PostsContent posts={data.posts} />
           <Footer info={info} />
         </main>
