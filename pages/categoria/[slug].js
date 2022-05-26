@@ -1,19 +1,25 @@
 import axios from "axios";
 import Head from "next/head";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Post from "../components/Post";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
-import Comments from "../components/Comment";
+import HeaderCategories from "../../components/HeaderPosts";
+import PostsContent from "../../components/PostsContent";
 
 export async function getStaticProps(context) {
   const { params } = context;
   try {
     const res = await fetch(
-      `https://dev113442.service-now.com/api/720824/devalexsantos/posts/${params.slug}`
+      `https://dev113442.service-now.com/api/720824/devalexsantos/category/${params.slug}`
     );
 
-    const individualPost = await res.json();
+    const categoryPosts = await res.json();
+
+    const resCat = await fetch(
+      "https://dev113442.service-now.com/api/720824/devalexsantos/categories"
+    );
+
+    const categories = await resCat.json();
 
     const resInfo = await fetch(
       "https://dev113442.service-now.com/api/720824/devalexsantos"
@@ -22,8 +28,9 @@ export async function getStaticProps(context) {
 
     return {
       props: {
-        individualPost,
+        categoryPosts,
         personalInfo,
+        categories,
       },
 
       revalidate: 3,
@@ -39,17 +46,17 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const slug = await fetch(
-    "https://dev113442.service-now.com/api/720824/devalexsantos/posts"
+    "https://dev113442.service-now.com/api/720824/devalexsantos/categories"
   );
 
   const data = await slug.json();
 
   return {
-    paths: data.result.posts.map((posts) => {
+    paths: data.result.categories.map((categories) => {
       return {
         params: {
-          id: posts.id,
-          slug: posts.slug,
+          id: categories.id,
+          slug: categories.slug,
         },
       };
     }),
@@ -57,7 +64,12 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Posts({ notFound, individualPost, personalInfo }) {
+export default function CategoryPage({
+  notFound,
+  categoryPosts,
+  personalInfo,
+  categories,
+}) {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -70,28 +82,28 @@ export default function Posts({ notFound, individualPost, personalInfo }) {
 
   if (!notFound) {
     const info = personalInfo.result.info;
-    const data = individualPost.result;
+    const data = categoryPosts.result;
+    const cat = categories.result.categories;
     return (
       <div>
         <Head>
-          <title>{data.tittle}</title>
+          <title>{data.title}</title>
           <meta name="description" content={data.description} />
           <meta name="robots" content="index,follow,archive" />
-          <meta name="keywords" content={data.tags}></meta>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className="min-w-[350px]">
           <Header info={info} navigation={navigation} />
-          <Post post={data} />
+          <HeaderCategories categories={cat} />
+          <PostsContent posts={data.posts} />
           <Footer info={info} />
-          <Comments post={data} />
         </main>
       </div>
     );
   } else {
     return (
       <div>
-        <h1>Post não encontrado...</h1>
+        <h1>Categoria não encontrada...</h1>
       </div>
     );
   }
