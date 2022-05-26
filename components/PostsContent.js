@@ -7,9 +7,6 @@ import { useEffect } from "react";
 export default function PostsContent(props) {
   return (
     <div className="container mx-auto flex flex-col justify-center items-center">
-      <div className="pb-4">
-        <h2 className="text-2xl">Resultado:</h2>
-      </div>
       <div className="flex justify-center flex-row flex-wrap">
         {props.posts.map((item, index) => (
           <Link href={`/${item.slug}`} key={index}>

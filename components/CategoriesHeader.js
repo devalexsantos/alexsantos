@@ -35,7 +35,18 @@ export default function CategoriesHeader(props) {
                   </li>
                 </Link>
               ))}
+              <Link href="/posts">
+                <li className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-center cursor-pointer border border-current m-2">
+                  Todos os Posts
+                </li>
+              </Link>
             </ul>
+          </div>
+          <div className="container mx-auto text-center pb-4">
+            <h2 className="text-2xl">
+              Resultados para{" "}
+              <span className="text-green-300">{props.data.title}</span>:
+            </h2>
           </div>
         </motion.div>
       </MotionConfig>

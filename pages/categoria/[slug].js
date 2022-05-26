@@ -77,7 +77,7 @@ export default function CategoryPage({
 
   const navigation = [
     { name: "Início", href: "/", current: false },
-    { name: "Posts", href: "#", current: true },
+    { name: "Posts", href: "/posts", current: true },
   ];
 
   if (!notFound) {
@@ -94,7 +94,7 @@ export default function CategoryPage({
         </Head>
         <main className="min-w-[350px]">
           <Header info={info} navigation={navigation} />
-          <CategoriesHeader categories={cat} />
+          <CategoriesHeader data={data} categories={cat} />
           <PostsContent posts={data.posts} />
           <Footer info={info} />
         </main>
