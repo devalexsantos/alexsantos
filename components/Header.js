@@ -84,6 +84,20 @@ export default function Header(props) {
                       />
                     </a>
                   </button>
+                  <button type="button">
+                    <a
+                      href="https://github.com/devalexsantos/alexsantos"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src="/assets/icon-code.svg"
+                        alt="Code Logo"
+                        width={33}
+                        height={33}
+                      />
+                    </a>
+                  </button>
                 </div>
               </div>
             </div>

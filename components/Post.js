@@ -17,7 +17,18 @@ export default function Post(props) {
         <h1 className="text-2xl md:text-3xl lg:text-5xl text-center">
           {props.post.tittle}
         </h1>
-        <p className="text-center m-3">27/04/2025 - por devalexsantos</p>
+        <p className="text-center m-3">
+          Criado em -{" "}
+          {props.post.date.substr(0, 10).split("-").reverse().join("/")} - por{" "}
+          <a
+            href="https://www.linkedin.com/in/alex-santos-427a92205/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline"
+          >
+            Alex Santos
+          </a>
+        </p>
       </div>
 
       <div
