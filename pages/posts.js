@@ -37,6 +37,7 @@ export default function Posts({ personalInfo, categories }) {
   const navigation = [
     { name: "Início", href: "/", current: false },
     { name: "Posts", href: "/posts", current: true },
+    { name: "Bio", href: "/bio", current: false },
   ];
 
   return (
