@@ -65,7 +65,8 @@ export default function Posts({ notFound, individualPost, personalInfo }) {
 
   const navigation = [
     { name: "Início", href: "/", current: false },
-    { name: "Posts", href: "#", current: true },
+    { name: "Posts", href: "/posts", current: true },
+    { name: "Bio", href: "/bio", current: false },
   ];
 
   if (!notFound) {

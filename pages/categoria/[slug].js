@@ -78,6 +78,7 @@ export default function CategoryPage({
   const navigation = [
     { name: "Início", href: "/", current: false },
     { name: "Posts", href: "/posts", current: true },
+    { name: "Bio", href: "/bio", current: false },
   ];
 
   if (!notFound) {
