@@ -32,8 +32,6 @@ export async function getStaticProps(context) {
         personalInfo,
         categories,
       },
-
-      revalidate: 3,
     };
   } catch {
     return {
@@ -60,7 +58,7 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: true,
+    fallback: false,
   };
 }
 
